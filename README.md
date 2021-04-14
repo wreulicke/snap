@@ -30,3 +30,8 @@ func TestCanUseAsIoWriter(t *testing.T) {
 	s.Assert(t)
 }
 ```
+
+## Related Projects
+
+* [sebdah/goldie](https://github.com/sebdah/goldie)
+* [bradleyjkemp/cupaloy](https://github.com/bradleyjkemp/cupaloy)
