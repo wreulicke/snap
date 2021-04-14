@@ -1,4 +1,4 @@
-package snapshot
+package snap
 
 import (
 	"flag"
@@ -8,9 +8,7 @@ type Config struct {
 	UpdateSnapshot bool
 }
 
-var (
-	update = flag.Bool("update", false, "Update snapshot files")
-)
+var update = flag.Bool("update", false, "Update snapshot files")
 
 type Option func(c Config) Config
 

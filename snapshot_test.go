@@ -1,4 +1,4 @@
-package snapshot
+package snap
 
 import (
 	"bytes"
@@ -33,14 +33,17 @@ type mockTestingT struct {
 }
 
 func (*mockTestingT) Helper() {}
+
 func (m *mockTestingT) Name() string {
 	return m.name
 }
+
 func (m *mockTestingT) Error(args ...interface{}) {
 	if m.onError != nil {
 		m.onError(args...)
 	}
 }
+
 func (m *mockTestingT) Errorf(format string, args ...interface{}) {
 	if m.onError != nil {
 		m.onError(append([]interface{}{format}, args...))
