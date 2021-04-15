@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"io"
 	"testing"
+
+	"github.com/wreulicke/snap/mock"
 )
 
 func TestSnapshot(t *testing.T) {
@@ -27,34 +29,11 @@ func TestCanUseAsIoWriter(t *testing.T) {
 	s.Assert(t)
 }
 
-type mockTestingT struct {
-	name    string
-	onError func(args ...interface{})
-}
-
-func (*mockTestingT) Helper() {}
-
-func (m *mockTestingT) Name() string {
-	return m.name
-}
-
-func (m *mockTestingT) Error(args ...interface{}) {
-	if m.onError != nil {
-		m.onError(args...)
-	}
-}
-
-func (m *mockTestingT) Errorf(format string, args ...interface{}) {
-	if m.onError != nil {
-		m.onError(append([]interface{}{format}, args...))
-	}
-}
-
 func TestAssert(t *testing.T) {
 	s := New()
 	_ = s.Snapshot("test")
 	var called bool
-	mockT := &mockTestingT{onError: func(args ...interface{}) { called = true }}
+	mockT := &mock.MockTestingT{onError: func(args ...interface{}) { called = true }}
 	s.Assert(mockT)
 	if !called {
 		t.Error("not called onError")
