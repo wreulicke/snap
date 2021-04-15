@@ -15,7 +15,7 @@ func TestSnapshotDir(t *testing.T) {
 	s := snap.New()
 	s.Snapshot("test")
 	var called bool
-	s.Assert(&mock.MockTestingT{OnError: func(args ...interface{}) {
+	s.Assert(&mock.TestingT{OnError: func(args ...interface{}) {
 		called = true
 	}})
 	if !called {
@@ -25,5 +25,4 @@ func TestSnapshotDir(t *testing.T) {
 	if os.IsNotExist(err) {
 		t.Error(err)
 	}
-
 }

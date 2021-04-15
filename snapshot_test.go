@@ -33,7 +33,7 @@ func TestAssert(t *testing.T) {
 	s := New()
 	_ = s.Snapshot("test")
 	var called bool
-	mockT := &mock.MockTestingT{onError: func(args ...interface{}) { called = true }}
+	mockT := &mock.TestingT{OnError: func(args ...interface{}) { called = true }}
 	s.Assert(mockT)
 	if !called {
 		t.Error("not called onError")

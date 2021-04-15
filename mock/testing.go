@@ -1,23 +1,23 @@
 package mock
 
-type MockTestingT struct {
+type TestingT struct {
 	TestName string
 	OnError  func(args ...interface{})
 }
 
-func (*MockTestingT) Helper() {}
+func (*TestingT) Helper() {}
 
-func (m *MockTestingT) Name() string {
+func (m *TestingT) Name() string {
 	return m.TestName
 }
 
-func (m *MockTestingT) Error(args ...interface{}) {
+func (m *TestingT) Error(args ...interface{}) {
 	if m.OnError != nil {
 		m.OnError(args...)
 	}
 }
 
-func (m *MockTestingT) Errorf(format string, args ...interface{}) {
+func (m *TestingT) Errorf(format string, args ...interface{}) {
 	if m.OnError != nil {
 		m.OnError(append([]interface{}{format}, args...))
 	}
