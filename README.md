@@ -2,9 +2,15 @@
 
 Snap is snapshot testing library.
 
+## Install
+
+```
+go get github.com/wreulicke/snap
+```
+
 ## Usage
 
-You can update snapshot via `go test ./... -update`.
+You can update snapshots via `go test ./... -update`.
 
 ### Examples
 
